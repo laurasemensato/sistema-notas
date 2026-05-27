@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 using namespace std;
+int opcaoInicial;
 
 int main()
 {
@@ -17,6 +18,31 @@ int main()
 
     // Leitura de alunos (Commit 1)
     cout << "=== SISTEMA DE NOTAS v4.0 ===" << endl;
+    cout << "1- Novo relatorio" << endl;
+    cout << "2- Ver relatorio salvo" << endl;
+    cout << "Escolha a opcao" << endl;
+    cin >> opcaoInicial;
+
+    // Leitura de arquivo (Commit 5)
+    if (opcaoInicial == 2)
+    {
+        ifstream leitura("relatorio.txt");
+        if (leitura.is_open())
+        {
+            string linha;
+            cout << "\n";
+            while (getline(leitura, linha))
+            {
+                cout << linha << endl;
+            }
+            leitura.close();
+        }
+        else
+        {
+            cout << "Nenhum relatorio encontrado." << endl;
+        }
+        return 0;
+    }
 
     do
     {
