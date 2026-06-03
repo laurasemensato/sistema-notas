@@ -14,7 +14,6 @@ int main()
     float notas[20][5];
     float media[20];
     int qtdDisciplinas;
-    
 
     // Processamento
 
@@ -46,28 +45,34 @@ int main()
         }
         return 0;
     }
-
-
-    else if (opcaoInicial == 3){
-    cout << "=== Sobre o sistema ===" << endl;
-    cout << "Desenvolvido por: Laura Nunes Semensato" << endl;
-    cout << "Turma LOPAL 2026 - SENAI-SP" << endl;
-    }
-
-    do
+    else if (opcaoInicial == 3)
     {
-        cout << "Quantidade de alunos (1 a 20): ";
-        cin >> qtdAlunos;
-    } while (qtdAlunos < 1 || qtdAlunos > 20);
+        cout << "Desenvolvido por: Laura Nunes Semensato" << endl;
+        cout << "Turma LOPAL 2026 - SENAI-SP" << endl;
+    
+        do
+        {
+            cout << "Quantidade de alunos (1 a 20): ";
+            cin >> qtdAlunos;
+        } while (qtdAlunos < 1 || qtdAlunos > 20);
 
-    cin.ignore();
-
-    for (int i = 0; i < qtdAlunos; i++)
-    {
-        cout << "Nome do aluno: " << i + 1 << ":";
-        getline(cin, nomes[i]);
-        if (nomes [i] == "");
+        cin.ignore();
     }
+   for (int i = 0; i < qtdAlunos; i++)
+    {
+        do
+        {
+            cout << "Nome do aluno " << i + 1 << ": ";
+            getline(cin, nomes[i]);
+            
+            if (nomes[i] == "")
+            {
+                cout << "O nome nao pode estar em branco. Tente novamente!\n" << endl;
+            }
+        } while (nomes[i] == "");
+    }
+     
+    
 
     // Notas e medias (Commit 2)
     do
@@ -90,7 +95,6 @@ int main()
             soma += notas[i][j];
         }
         media[i] = soma / qtdDisciplinas;
-        
     }
 
     // Saida
@@ -131,7 +135,7 @@ int main()
 
     if (arquivo.is_open())
     {
-    
+
         arquivo << "=== RELATORIO ===" << endl;
         for (int i = 0; i < qtdAlunos; i++)
         {
@@ -149,8 +153,8 @@ int main()
                 arquivo << "Reprovado" << endl;
             }
             time_t agora = time(0);
-char* dataHora = ctime(&agora);
-arquivo << "Data do relatorio: " << dataHora << endl;
+            char *dataHora = ctime(&agora);
+            arquivo << "Data do relatorio: " << dataHora << endl;
         }
         arquivo << "\nResumo: " << aprovados << " aprovados" << recuperacao << " recuperacao" << reprovados << " reprovados" << endl;
         arquivo.close();
