@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <ctime>
 using namespace std;
 int opcaoInicial;
 
@@ -127,6 +128,7 @@ int main()
 
     if (arquivo.is_open())
     {
+    
         arquivo << "=== RELATORIO ===" << endl;
         for (int i = 0; i < qtdAlunos; i++)
         {
@@ -143,8 +145,11 @@ int main()
             {
                 arquivo << "Reprovado" << endl;
             }
+            time_t agora = time(0);
+char* dataHora = ctime(&agora);
+arquivo << "Data do relatorio: " << dataHora << endl;
         }
-        arquivo << "\nResumo: " << aprovados << "aprovados" << recuperacao << "recuperacao" << reprovados << "reprovados" << endl;
+        arquivo << "\nResumo: " << aprovados << " aprovados" << recuperacao << " recuperacao" << reprovados << " reprovados" << endl;
         arquivo.close();
         cout << "\nRelatorio salvo em relatrio.txt" << endl;
     }
