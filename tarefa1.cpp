@@ -14,6 +14,7 @@ int main()
     float notas[20][5];
     float media[20];
     int qtdDisciplinas;
+    
 
     // Processamento
 
@@ -65,6 +66,7 @@ int main()
     {
         cout << "Nome do aluno: " << i + 1 << ":";
         getline(cin, nomes[i]);
+        if (nomes [i] == "");
     }
 
     // Notas e medias (Commit 2)
@@ -88,6 +90,7 @@ int main()
             soma += notas[i][j];
         }
         media[i] = soma / qtdDisciplinas;
+        
     }
 
     // Saida
